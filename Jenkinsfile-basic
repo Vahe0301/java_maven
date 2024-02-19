@@ -7,7 +7,7 @@ pipeline{
 
     environment {
 
-        registry = "bagrat92/java-maven-app"
+        registry = "Vahe0301/java-maven-app"
     
     }
 
@@ -17,7 +17,7 @@ pipeline{
                 script {
                     git branch: 'master',
                         credentialsId: 'github_key',
-                        url: 'git@github.com:bagrat92/java_maven_app.git'
+                        url: 'git@github.com:Vahe0301/java_maven_app.git'
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline{
             steps {
                 withCredentials(
                     [usernamePassword
-                        (credentialsId: 'bagrat92', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                        (credentialsId: 'Vahe0301', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                         sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                         sh 'docker push ${registry}:${BUILD_ID}'
                     }
